@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePets", "EmployeePets\EmployeePets.csproj", "{ECC91DA2-4925-4B84-945B-DB23EEA7C7A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePetsTests", "EmployeePetsTests\EmployeePetsTests.csproj", "{9E0BA988-562D-4DC1-B510-47D65523AB8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePets.Common", "EmployeePets.Common\EmployeePets.Common.csproj", "{4F4C7E83-162B-4A74-B311-D9D1F5B33FF1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECC91DA2-4925-4B84-945B-DB23EEA7C7A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECC91DA2-4925-4B84-945B-DB23EEA7C7A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECC91DA2-4925-4B84-945B-DB23EEA7C7A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECC91DA2-4925-4B84-945B-DB23EEA7C7A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E0BA988-562D-4DC1-B510-47D65523AB8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E0BA988-562D-4DC1-B510-47D65523AB8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E0BA988-562D-4DC1-B510-47D65523AB8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E0BA988-562D-4DC1-B510-47D65523AB8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F4C7E83-162B-4A74-B311-D9D1F5B33FF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F4C7E83-162B-4A74-B311-D9D1F5B33FF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F4C7E83-162B-4A74-B311-D9D1F5B33FF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F4C7E83-162B-4A74-B311-D9D1F5B33FF1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

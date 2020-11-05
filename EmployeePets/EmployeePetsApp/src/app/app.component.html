@@ -1,0 +1,123 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}}</title>
+</head>
+<body>
+<div class="container-fluid">
+<h2>Employees</h2>
+<table *ngIf="tableMode; else create" class="table table-striped table_blur">
+    <thead>
+    <tr>
+        <td class="text-md-center font-weight-bold">Name</td>
+        <td class="text-md-center font-weight-bold">Last Name</td>
+        <td class="text-md-center font-weight-bold">Emploee</td>
+        <td></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of persons" (click)="rowClick(p)" [style.background-color]="selected?.id==p?.id?'yellow':'inherit'">
+        <ng-template [ngIf]="person?.id != p.id" [ngIfElse]="edit">
+            <td class="text-left">{{p.name}}</td>
+            <td class="text-left">{{p.lastName}}</td>
+            <td class="text-center"><input type="checkbox" class="custom-checkbox" [(ngModel)]="p.isEmployee" (click)="$event.preventDefault()"></td>
+            <td>
+                <button class="btn btn-sm btn-primary" (click)="editPerson(p)">Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="deletePerson(p)">Delete</button>
+                <button class="btn btn-sm btn-secondary" (click)="addPet(p)">Add pet</button>
+            </td>
+        </ng-template>
+    </tr>
+    </tbody>
+</table>
+<input *ngIf="tableMode" type="button" value="Add" class="btn btn-sm btn-primary" (click)="addPerson()"/>
+</div>
+<div class ="container-fluid" >
+<h2 *ngIf="tableMode">Pets</h2>
+<table *ngIf="tableMode" class="table table-striped table_blur">
+    <thead class="thead-dark">
+    <tr>
+        <td class="text-md-center font-weight-bold">Name</td>
+        <td class="text-md-center font-weight-bold">Type</td>
+        <td></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of pets">
+        <ng-template [ngIf]="pet?.id != p.id" [ngIfElse]="petEdit">
+            <td>{{p.name}}</td>
+            <td>{{p.type?.name}}</td>   
+            <td>
+                <button class="btn btn-sm btn-primary" (click)="editPet(p)">Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="deletePet(p)">Delete</button>
+            </td>
+        </ng-template>
+    </tr>
+    </tbody>
+</table>
+</div>
+<!--inline edit template-->
+<ng-template #edit>
+    <td><input type="text" [(ngModel)]="person.name" class="form-control-sm" /></td>
+    <td><input type="text" [(ngModel)]="person.lastName" class="form-control-sm" /></td>
+    <td class="text-center"><input type="checkbox" [(ngModel)]="person.isEmployee" class="custom-checkbox" /></td>
+    <td>
+        <input type="button" value="Save" (click)="savePerson()" class="btn btn-sm btn-success" />
+        <input type="button" value="Cancel" (click)="cancelPerson()" class="btn btn-sm btn-warning" />
+    </td>
+</ng-template>
+
+<ng-template #petEdit>
+    <td><input type="text" [(ngModel)]="pet.name" class="form-control-sm" /></td>
+    <td>
+        <select [(ngModel)]="pet.type" [compareWith]="compareById" class="form-control-sm">
+            <option *ngFor="let atype of animalTypes" [ngValue]="atype">{{atype.name}}</option>
+        </select>
+    </td>
+    <td>
+        <input type="button" value="Save" class="btn btn-sm btn-success" (click)="savePet()"/>
+        <input type="button" value="Cancel" class="btn btn-sm btn-warning" (click)="cancelPet()"/>
+    </td>
+</ng-template>
+
+<!--inpline add template-->
+<ng-template #create>
+    <div *ngIf="personMode; else petCreate">
+        <div class="form-group">
+        <label>Name</label>
+        <input type="text" [(ngModel)]="person.name" class="form-control" />
+        </div>
+        <div class="form-group">
+        <label>Last name</label>
+        <input type="text" [(ngModel)]="person.lastName" class="form-control" />
+        </div>
+        <div class="form-group">
+        <label>Is Employee</label>
+        <input type="checkbox" [(ngModel)]="person.isEmployee" class="form-control" />
+        </div>
+        <div>
+        <input type="button" value="Save" (click)="savePerson()" class="btn btn-success" />
+        <input type="button" value="Cancel" (click)="cancelPerson()" class="btn btn-warning" />
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #petCreate>
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" [(ngModel)]="pet.name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Type</label>
+        <select class = "form-control" [(ngModel)]="pet.type">
+                <option *ngFor="let t of animalTypes" [ngValue]="t">{{t.name}}</option>
+            </select>
+        
+    </div>
+    <div>
+        <input type="button" value="Save" (click)="savePet()" class="btn btn-success" />
+        <input type="button" value="Cancel" (click)="cancelPerson()" class="btn btn-warning" />
+    </div>
+</ng-template>
+
+</body>
+             
