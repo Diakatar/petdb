@@ -26,11 +26,14 @@
       <ProjectReference Include="..\EmployeePets.Common\EmployeePets.Common.csproj" />
     </ItemGroup>
 
-    <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <Target Name="CreateDatabase" AfterTargets="Build">
         <Exec WorkingDirectory="$(SpaRoot)" Command="sqllocaldb create PetDB -s" IgnoreExitCode="true" />
         <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    </Target>
+    
+    <Target Name="RunWebpack" AfterTargets="ComputeFilesToPublish">
+        <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
         <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
-
         <ItemGroup>
             <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
             <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
