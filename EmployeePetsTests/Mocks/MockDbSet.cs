@@ -34,7 +34,7 @@ namespace EmployeePetsTests.Mocks
             
             //Mocking the update of entities
             Setup(_ => _.Update(It.IsAny<TEntity>())).Verifiable();
-            });
+            
             //Mocking the retrieve of entities
             Setup(_ => _.Find(It.IsAny<long>())).Returns((EntityEntry<TEntity> arg) => { data.FirstOrDefault(i=>i.)})
 
