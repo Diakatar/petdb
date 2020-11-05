@@ -91,7 +91,6 @@ export class AppComponent implements OnInit {
   private loadPets() {
     if (this.selected?.id != null)
       this.dataService.getPersonPets(this.selected.id).subscribe((data: Pet[])=>this.pets = data);
-    console.debug(this.pets);
   }
   
   addPet(p: Person) {
@@ -102,7 +101,6 @@ export class AppComponent implements OnInit {
 
   editPet(p: Pet) {
     this.pet = p;
-    console.debug(this.pet);
   }
 
   deletePet(p: Pet) {
@@ -118,11 +116,9 @@ export class AppComponent implements OnInit {
   savePet() {
     if (!this.pet?.id) {
       this.dataService.createPet(this.pet).subscribe((data: Pet) => this.pets?.push(data));
-      console.debug("save pet:", this.pet);
     }
     else {
       this.dataService.updatePet(this.pet).subscribe(() => this.loadPets());
-      console.debug("update pet", this.pet);
     }
     this.cancelPet();
   }

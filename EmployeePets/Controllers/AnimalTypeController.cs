@@ -28,15 +28,7 @@ namespace EmployeePets.Controllers
         {
             _logger.LogDebug(
                 $"{nameof(AnimalTypeController)}.{nameof(Get)} method called.");
-            if (!await _db.AnimalTypes.AnyAsync().ConfigureAwait(false))
-            {
-                await _db.AnimalTypes.AddAsync(new AnimalType { Name = "Cat", }).ConfigureAwait(false);
-                await _db.AnimalTypes.AddAsync(new AnimalType { Name = "Dog",  }).ConfigureAwait(false);
-                await _db.AnimalTypes.AddAsync(new AnimalType { Name = "Parrot", }).ConfigureAwait(false);
-                await _db.AnimalTypes.AddAsync(new AnimalType { Name = "Hamster", }).ConfigureAwait(false);
-                await _db.AnimalTypes.AddAsync(new AnimalType { Name = "Turtle", }).ConfigureAwait(false);
-                await _db.SaveChangesAsync().ConfigureAwait(false);
-            }
+            
             return await _db.AnimalTypes.ToListAsync().ConfigureAwait(false);
         }
 

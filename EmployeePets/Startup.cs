@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace EmployeePets
 {
@@ -55,6 +55,21 @@ namespace EmployeePets
                     spa.UseAngularCliServer("start");
                 }
             });
+
+            // database initialization
+            var serviceScopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+            using var serviceScope = serviceScopeFactory.CreateScope();
+            var dbContext = serviceScope.ServiceProvider.GetService<ApplicationContext>();
+            dbContext.Database.EnsureCreated();
+            if (dbContext.AnimalTypes.Any()) return;
+            dbContext.AnimalTypes.AddRange(
+                new AnimalType { Name = "Cat", },
+                new AnimalType { Name = "Dog",  },
+                new AnimalType { Name = "Parrot", },
+                new AnimalType { Name = "Hamster", },
+                new AnimalType { Name = "Turtle", }
+            );
+            dbContext.SaveChanges();
         }
     }
 }

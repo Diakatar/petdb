@@ -1,18 +1,17 @@
-# EmploeePetsApp
+# Employee Pets Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+The project was created as demo for EF6, RestAPI and Angular 10 CRUD operations as SPA
+
+## Deployment
+
+After application is cloned please run `sqllocaldb create PetDB` to create SQL Server local instance for application use.  
+All other data will be imported automatically at the first run
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `dotnet start ./EmployeePets/` in solution root for a dev server. Navigate to `https://localhost:5001/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Running integration tests
 
 ## Running unit tests
 

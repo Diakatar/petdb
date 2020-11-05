@@ -16,6 +16,7 @@
     "@angular/platform-browser": "~10.0.0",
     "@angular/platform-browser-dynamic": "~10.0.0",
     "@angular/router": "~10.0.0",
+    "@angular-devkit/build-angular":"^0.1002.0", 
     "@types/jest": "^26.0.15",
     "aggregate-error": "~3.1.0",
     "bootstrap": "^4.5.3",
